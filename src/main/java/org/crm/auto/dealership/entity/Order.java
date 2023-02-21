@@ -23,7 +23,7 @@ public class Order extends AbstractEntity {
   @ManyToOne
   private User customer;
 
-  @ManyToMany
+  @ManyToMany(mappedBy = "orders")
   private List<Car> car;
 
   @ManyToOne

@@ -3,9 +3,12 @@ package org.crm.auto.dealership.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
+import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.crm.auto.dealership.common.enums.BodyType;
@@ -35,4 +38,10 @@ public class Car extends AbstractEntity {
 
   @Column(name = "price")
   private BigDecimal price;
+
+  @ManyToMany
+  @JoinTable(name = "cars_orders",
+      joinColumns = @JoinColumn(name = "car_id"),
+      inverseJoinColumns = @JoinColumn(name = "order_id"))
+  private List<Order> orders;
 }
