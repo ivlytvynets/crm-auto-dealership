@@ -3,7 +3,6 @@ package org.crm.auto.dealership.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,14 +19,14 @@ public class Order extends AbstractEntity {
   @Column(name = "order_date")
   private LocalDateTime orderDate;
 
-  @ManyToOne
-  private User customer;
+  @Column(name = "customer_email")
+  private String customerEmail;
 
   @ManyToMany(mappedBy = "orders")
   private List<Car> car;
 
-  @ManyToOne
-  private User seller;
+  @Column(name = "seller_email")
+  private String sellerEmail;
 
   @Column(name = "status")
   private OrderStatus status;

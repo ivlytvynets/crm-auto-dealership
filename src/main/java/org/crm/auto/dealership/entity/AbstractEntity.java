@@ -12,7 +12,7 @@ public abstract class AbstractEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Long id;
 
   @Override
   public int hashCode() {
